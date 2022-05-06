@@ -44,6 +44,16 @@ class m220505_184552_create_file_table extends Migration
                 }
             }
 
+            $this->addForeignKey(
+                'fk-category-file-id', 
+                'category', 
+                'file_id', 
+                'file', 
+                'id', 
+                'CASCADE', 
+                'CASCADE'
+            );
+
         }
     }
 
@@ -52,6 +62,7 @@ class m220505_184552_create_file_table extends Migration
      */
     public function safeDown()
     {
+        $this->dropForeignKey('fk-category-file-id', 'category');
         $this->dropTable('{{%file}}');
     }
 
