@@ -19,7 +19,7 @@ class m220505_184552_create_file_table extends Migration
         $this->createTable($tableName, [
             'id' => $this->primaryKey(),
             'name' => $this->string(255)->notNull()->unique(),
-            'ext' => $this->string(10)->notNull(),
+            'extention' => $this->string(10)->notNull(),
             'status' => $this->boolean()->defaultValue(1),
             'created' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')
         ], $tableOptions);
@@ -31,9 +31,9 @@ class m220505_184552_create_file_table extends Migration
             $this->addCommentOnTable($tableName, 'Таблица файлов');
 
             $comments = [
-                'id' => 'id товара',
+                'id' => 'id файла',
                 'name' => 'Имя файла',
-                'ext' => 'Расширение',
+                'extention' => 'Расширение файла',
                 'status' => 'Статус',
                 'created' => 'Дата создания'
             ];

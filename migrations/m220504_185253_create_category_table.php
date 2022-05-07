@@ -20,6 +20,7 @@ class m220504_185253_create_category_table extends Migration
             'id' => $this->primaryKey(),
             'parent_id' => $this->integer()->unsigned()->notNull()->defaultValue(0),
             'name' => $this->string(255)->notNull()->unique(),
+            'text' => $this->text(),
             'file_id' => $this->integer(11),
             'slug' => $this->string(255)->defaultValue(null)->unique(),
             'title' => $this->string(255)->defaultValue(null),
@@ -39,6 +40,7 @@ class m220504_185253_create_category_table extends Migration
                 'id' => 'id категории',
                 'parent_id' => 'id родительской категории',
                 'name' => 'Название категории',
+                'text' => 'Текст категории',
                 'file_id' => 'Картинка категории',
                 'slug' => 'URL категории',
                 'title' => 'SEO-заголовок',
@@ -56,6 +58,7 @@ class m220504_185253_create_category_table extends Migration
 
             $this->insert($tableName, [
                 'name'=>'Все',
+                'text' => 'Каталог товаров производственно-строительной компании "ЭкоСИП строй"',
                 'slug' =>'all',
                 'title' => 'Каталог товаров',
                 'keywords' => 'каталог товаров',
