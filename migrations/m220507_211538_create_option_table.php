@@ -23,9 +23,7 @@ class m220507_211538_create_option_table extends Migration
             'group_id' => $this->integer(11),
             'value' => $this->string(255)->defaultValue(null),
             'price' => $this->money(11,2)->defaultValue(null),
-            'description' => $this->text()->defaultValue(null),
-            'status' => $this->boolean()->defaultValue(1),
-            'created' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')
+            'description' => $this->text()->defaultValue(null)
         ], $tableOptions);
 
         $table = $this->getDb()->getSchema()->getTableSchema($tableName);
@@ -41,9 +39,7 @@ class m220507_211538_create_option_table extends Migration
                 'group_id' => 'id группы опции',
                 'value' => 'Значение',
                 'price' => 'Цена, руб.',
-                'description' => 'Описание',
-                'status' => 'Статус',
-                'created' => 'Дата создания'
+                'description' => 'Описание'
             ];
 
             foreach ($comments as $key => $value) {

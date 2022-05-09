@@ -22,8 +22,7 @@ class m220506_162830_create_template_table extends Migration
             'name' => $this->string(255)->notNull()->unique(),
             'type' => $this->string(50)->notNull(),
             'description' => $this->string(255)->defaultValue(null),
-            'status' => $this->boolean()->defaultValue(1),
-            'created' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')
+            'status' => $this->boolean()->defaultValue(1)
         ], $tableOptions);
 
         $table = $this->getDb()->getSchema()->getTableSchema($tableName);
@@ -37,8 +36,7 @@ class m220506_162830_create_template_table extends Migration
                 'name' => 'Название',
                 'type' => 'Тип шаблона',
                 'description' => 'Описание',
-                'status' => 'Статус',
-                'created' => 'Дата создания'
+                'status' => 'Статус'
             ];
 
             foreach ($comments as $key => $value) {

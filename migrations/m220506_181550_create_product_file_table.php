@@ -19,8 +19,7 @@ class m220506_181550_create_product_file_table extends Migration
         $this->createTable($tableName, [
             'id' => $this->primaryKey(),
             'product_id' => $this->integer(11),
-            'file_id' => $this->integer(11),
-            'created' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')
+            'file_id' => $this->integer(11)
         ], $tableOptions);
 
         $this->addForeignKey(
@@ -52,8 +51,7 @@ class m220506_181550_create_product_file_table extends Migration
             $comments = [
                 'id' => 'id',
                 'product_id' => 'id товара',
-                'file_id' => 'id файла',
-                'created' => 'Дата создания'
+                'file_id' => 'id файла'
             ];
 
             foreach ($comments as $key => $value) {

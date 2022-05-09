@@ -19,8 +19,7 @@ class m220506_174527_create_product_template_table extends Migration
         $this->createTable($tableName, [
             'id' => $this->primaryKey(),
             'product_id' => $this->integer(11),
-            'template_id' => $this->integer(11),
-            'created' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')
+            'template_id' => $this->integer(11)
         ], $tableOptions);
 
         $this->addForeignKey(
@@ -52,8 +51,7 @@ class m220506_174527_create_product_template_table extends Migration
             $comments = [
                 'id' => 'id',
                 'product_id' => 'id товара',
-                'template_id' => 'id шаблона',
-                'created' => 'Дата создания'
+                'template_id' => 'id шаблона'
             ];
 
             foreach ($comments as $key => $value) {

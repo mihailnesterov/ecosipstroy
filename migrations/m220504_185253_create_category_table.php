@@ -26,8 +26,7 @@ class m220504_185253_create_category_table extends Migration
             'title' => $this->string(255)->defaultValue(null),
             'keywords' => $this->string(255)->defaultValue(null),
             'description' => $this->text()->defaultValue(null),
-            'status' => $this->boolean()->defaultValue(1),
-            'created' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')
+            'status' => $this->boolean()->defaultValue(1)
         ], $tableOptions);
 
         $table = $this->getDb()->getSchema()->getTableSchema($tableName);
@@ -46,8 +45,7 @@ class m220504_185253_create_category_table extends Migration
                 'title' => 'SEO-заголовок',
                 'keywords' => 'SEO-keywords',
                 'description' => 'SEO-описание',
-                'status' => 'Статус',
-                'created' => 'Дата создания'
+                'status' => 'Статус'
             ];
 
             foreach ($comments as $key => $value) {
