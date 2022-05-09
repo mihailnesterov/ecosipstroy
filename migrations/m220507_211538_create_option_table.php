@@ -21,8 +21,6 @@ class m220507_211538_create_option_table extends Migration
             'name' => $this->string(255)->notNull()->unique(),
             'type_id' => $this->integer(11),
             'group_id' => $this->integer(11),
-            'value' => $this->string(255)->defaultValue(null),
-            'price' => $this->money(11,2)->defaultValue(null),
             'description' => $this->text()->defaultValue(null)
         ], $tableOptions);
 
@@ -37,8 +35,6 @@ class m220507_211538_create_option_table extends Migration
                 'name' => 'Название опции',
                 'type_id' => 'id типа опции',
                 'group_id' => 'id группы опции',
-                'value' => 'Значение',
-                'price' => 'Цена, руб.',
                 'description' => 'Описание'
             ];
 
