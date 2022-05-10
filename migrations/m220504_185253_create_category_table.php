@@ -22,10 +22,11 @@ class m220504_185253_create_category_table extends Migration
             'name' => $this->string(255)->notNull()->unique(),
             'text' => $this->text(),
             'file_id' => $this->integer(11),
+            'icon_id' => $this->integer(11),
             'slug' => $this->string(255)->defaultValue(null)->unique(),
-            'title' => $this->string(255)->defaultValue(null),
-            'keywords' => $this->string(255)->defaultValue(null),
-            'description' => $this->text()->defaultValue(null),
+            'title' => $this->string(60),
+            'keywords' => $this->string(255),
+            'description' => $this->string(160),
             'status' => $this->boolean()->defaultValue(1)
         ], $tableOptions);
 
@@ -40,7 +41,8 @@ class m220504_185253_create_category_table extends Migration
                 'parent_id' => 'id родительской категории',
                 'name' => 'Название категории',
                 'text' => 'Текст категории',
-                'file_id' => 'Картинка категории',
+                'file_id' => 'id картинки категории',
+                'icon_id' => 'id иконки категории',
                 'slug' => 'URL категории',
                 'title' => 'SEO-заголовок',
                 'keywords' => 'SEO-keywords',

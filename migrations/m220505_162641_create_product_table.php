@@ -27,9 +27,9 @@ class m220505_162641_create_product_table extends Migration
             'price' => $this->money(11,2)->defaultValue(0.00),
             'discount' => $this->integer()->defaultValue(null),
             'new' => $this->boolean()->defaultValue(0),
-            'title' => $this->string(255)->defaultValue(null),
-            'keywords' => $this->string(255)->defaultValue(null),
-            'description' => $this->text()->defaultValue(null),
+            'title' => $this->string(60),
+            'keywords' => $this->string(255),
+            'description' => $this->string(160),
             'status' => $this->boolean()->defaultValue(1),
             'created' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')
         ], $tableOptions);
