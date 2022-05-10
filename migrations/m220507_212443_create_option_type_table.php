@@ -18,6 +18,7 @@ class m220507_212443_create_option_type_table extends Migration
 
         $this->createTable($tableName, [
             'id' => $this->primaryKey(),
+            'icon_id' => $this->integer(11),
             'name' => $this->string(255)->notNull()->unique(),
             'description' => $this->text()->defaultValue(null),
         ], $tableOptions);
@@ -30,6 +31,7 @@ class m220507_212443_create_option_type_table extends Migration
 
             $comments = [
                 'id' => 'id типа',
+                'icon_id' => 'id иконки типа',
                 'name' => 'Название типа',
                 'description' => 'Описание'
             ];
