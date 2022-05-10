@@ -20,6 +20,9 @@ class m220510_222744_create_tag_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(255)->notNull()->unique(),
             'slug' => $this->string(255)->notNull()->unique(),
+            'title' => $this->string(60),
+            'keywords' => $this->string(255),
+            'description' => $this->string(160),
             'status' => $this->boolean()->defaultValue(1)
         ], $tableOptions);
 
@@ -33,6 +36,9 @@ class m220510_222744_create_tag_table extends Migration
                 'id' => 'id тега',
                 'name' => 'Название',
                 'slug' => 'URL тега',
+                'title' => 'SEO-заголовок',
+                'keywords' => 'SEO-keywords',
+                'description' => 'SEO-описание',
                 'status' => 'Статус',
             ];
 
