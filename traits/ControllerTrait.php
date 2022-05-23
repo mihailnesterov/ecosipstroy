@@ -5,10 +5,7 @@ namespace app\traits;
 use Yii;
 
 /**
- * Трейт используется в контроллерах сайта. 
- * 
- * Trait ControllerTrait
- * @package components\widget
+ * Трейт используется в контроллерах сайта.
  */
 trait ControllerTrait {
 
