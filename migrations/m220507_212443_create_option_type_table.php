@@ -7,6 +7,8 @@ use yii\db\Migration;
  */
 class m220507_212443_create_option_type_table extends Migration
 {
+    use \app\traits\MigrationTrait;
+
     /**
      * {@inheritdoc}
      */
@@ -64,17 +66,4 @@ class m220507_212443_create_option_type_table extends Migration
         $this->dropTable('{{%option_type}}');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    private function getTableOptions()
-    {
-        $tableOptions = null;
-        
-        if ($this->db->driverName === 'mysql') {
-            $tableOptions = 'CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB';
-        }
-        
-        return $tableOptions;
-    }
 }

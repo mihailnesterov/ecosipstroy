@@ -7,6 +7,8 @@ use yii\db\Migration;
  */
 class m220504_185253_create_category_table extends Migration
 {
+    use \app\traits\MigrationTrait;
+
     /**
      * {@inheritdoc}
      */
@@ -55,16 +57,6 @@ class m220504_185253_create_category_table extends Migration
                     $this->addCommentOnColumn($tableName, $key, $value);
                 }
             }
-
-            $this->insert($tableName, [
-                'name'=>'Все',
-                'text' => 'Каталог товаров производственно-строительной компании "ЭкоСИП строй"',
-                'slug' =>'all',
-                'title' => 'Каталог товаров',
-                'keywords' => 'каталог товаров',
-                'description' => 'Каталог товаров компании',
-            ]);
-
         }
     }
 
@@ -76,17 +68,4 @@ class m220504_185253_create_category_table extends Migration
         $this->dropTable('{{%category}}');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    private function getTableOptions()
-    {
-        $tableOptions = null;
-        
-        if ($this->db->driverName === 'mysql') {
-            $tableOptions = 'CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB';
-        }
-        
-        return $tableOptions;
-    }
 }

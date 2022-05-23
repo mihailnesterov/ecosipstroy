@@ -7,6 +7,8 @@ use yii\db\Migration;
  */
 class m220504_180337_init extends Migration
 {
+    use \app\traits\MigrationTrait;
+
     /**
      * {@inheritdoc}
      */
@@ -67,20 +69,6 @@ class m220504_180337_init extends Migration
     public function safeDown()
     {
         $this->dropTable('{{%user}}');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    private function getTableOptions()
-    {
-        $tableOptions = null;
-        
-        if ($this->db->driverName === 'mysql') {
-            $tableOptions = 'CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB';
-        }
-        
-        return $tableOptions;
     }
 
 }

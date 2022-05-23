@@ -7,6 +7,8 @@ use yii\db\Migration;
  */
 class m220510_230337_create_news_tag_table extends Migration
 {
+    use \app\traits\MigrationTrait;
+
     /**
      * {@inheritdoc}
      */
@@ -72,18 +74,5 @@ class m220510_230337_create_news_tag_table extends Migration
         $this->dropForeignKey('fk-news-tag-tagId', 'news_tag');
         $this->dropTable('{{%news_tag}}');
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    private function getTableOptions()
-    {
-        $tableOptions = null;
-        
-        if ($this->db->driverName === 'mysql') {
-            $tableOptions = 'CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB';
-        }
-        
-        return $tableOptions;
-    }
+    
 }
