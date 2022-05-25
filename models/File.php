@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "file".
@@ -106,5 +107,66 @@ class File extends \yii\db\ActiveRecord
     public function getProductFiles()
     {
         return $this->hasMany(ProductFile::className(), ['file_id' => 'id']);
+    }
+
+    /**
+     * Gets path from file's created date
+     * 
+     * @param mixed
+     * @return string
+     */
+    public static function getFilePath($file)
+    {
+        $base = Yii::getAlias('@uploads');
+
+        $datePath = array_reduce(
+            explode('-', explode(' ', $file->created)[0]),
+            function($acc, $item) {
+                return "$acc/$item";
+            }
+        );
+
+        return "{$base}{$datePath}/{$file->name}.{$file->extention}";
+    }
+
+    /**
+     * Gets uploads directory path.
+     * 
+     * @return string
+     */
+    public function getUploadsPath()
+    {
+        $uploadsPath = Yii::$app->basePath . Yii::getAlias('@uploads') . $this->getCurrentDateAsString();
+        $this->createUploadsFolder($uploadsPath);
+        
+        return $uploadsPath;
+    }
+
+    /**
+     * Gets current date as string like "2022/01/01".
+     * 
+     * @return string
+     */
+    public function getCurrentDateAsString()
+    {
+        date_default_timezone_set('Asia/Krasnoyarsk');
+        $date = new \DateTime();
+        $day = $date->format('d');
+        $month = $date->format('m');
+        $year = $date->format('Y');
+        
+        return "$year/$month/$day";
+    }
+
+    /**
+     * Creates upload folder if it doesn't exist.
+     * 
+     * @param string $uploadPath
+     */
+    public function createUploadsFolder($uploadsPath)
+    {
+        if (!file_exists($uploadsPath)) {
+            mkdir($uploadsPath, 0777, true);
+        }
     }
 }
