@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "gallery".
@@ -17,6 +18,8 @@ use Yii;
  */
 class Gallery extends \yii\db\ActiveRecord
 {
+    use \app\traits\PaginationTrait;
+
     /**
      * {@inheritdoc}
      */
@@ -61,5 +64,23 @@ class Gallery extends \yii\db\ActiveRecord
     public function getFile()
     {
         return $this->hasOne(File::className(), ['id' => 'file_id']);
+    }
+
+    /**
+     * Gets gallery filter.
+     *
+     * @param mixed $gallery
+     * @return array
+     */
+    public static function getFilter($gallery)
+    {
+        return array_unique(
+            ArrayHelper::merge(
+                ['Все'],
+                ArrayHelper::toArray(
+                    ArrayHelper::getColumn($gallery, 'category')
+                )
+            )
+        );
     }
 }
