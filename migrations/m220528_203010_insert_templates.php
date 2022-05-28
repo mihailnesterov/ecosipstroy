@@ -19,6 +19,7 @@ class m220528_203010_insert_templates extends Migration
 
         foreach($templates as $key => $template) {
             $this->insert('{{%template}}', [
+                'id' => intval($key + 1),
                 'name' => $template['name'],
                 'type' => $template['type'],
                 'description' => $template['description']

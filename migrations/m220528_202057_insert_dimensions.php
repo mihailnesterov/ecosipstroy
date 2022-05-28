@@ -23,6 +23,7 @@ class m220528_202057_insert_dimensions extends Migration
 
         foreach($dimensions as $key => $dimension) {
             $this->insert('{{%dimension}}', [
+                'id' => intval($key + 1),
                 'name' => $dimension['name'],
                 'description' => $dimension['description']
             ]);
