@@ -29,6 +29,8 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    use \app\traits\PaginationTrait;
+
     /**
      * {@inheritdoc}
      */
